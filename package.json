@@ -1,0 +1,22 @@
+{
+  "name": "project-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "about.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoangnam1402/project-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hoangnam1402/project-web/issues"
+  },
+  "homepage": "https://github.com/hoangnam1402/project-web#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

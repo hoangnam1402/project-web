@@ -24,8 +24,8 @@ router.post('/', async (req, res) => {
     const {name, gmail, context} = req.body
 
     //
-    if(!name)
-    return res.status(400).json({success: false, message: 'Name is require'})
+    if(!gmail)
+    return res.status(400).json({success: false, message: 'Gmail is require'})
 
     try {
         const newPost = new Post({name, gmail, context, stat: 'Wait'})
@@ -38,5 +38,30 @@ router.post('/', async (req, res) => {
         res.status(500).json({success: false, message: 'Internal server error'})
     }
 });
+
+// @route PUT api/auth/post
+// @desc add user
+// @access private
+router.put('/:id', verifyToken, async (req, res) => {
+    const {name, gmail, context, stat} = req.body
+    
+    if(!gmail)
+    return res.status(400).json({success: false, message: 'Gmail is require'})
+
+    try {
+        let updatePost = {name, gmail, context, stat}
+
+        const postUpdateCondition = {id: req.params.id}
+
+        updatePost = await Post.findOneAndUpdate(postUpdateCondition, updatePost, {new: true})
+
+        //user not authorised to update postUpdateCondition
+        if (!updatePost)
+        res.status(401).json({success: false, message: 'Post not found or user not authorised'})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({success: false, message: 'Internal server error'})
+    }
+})
 
 module.exports = router;

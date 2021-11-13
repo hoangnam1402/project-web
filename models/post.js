@@ -4,9 +4,11 @@ const Schema = mongoose.Schema;
 const PostSchema = new Schema({
     name: { 
         type: String,
+    },
+    gmail: {
+        type: String,
         require: true,
     },
-    gmail: { type: String },
     context: { type: String },
     stat: { 
         type: String,

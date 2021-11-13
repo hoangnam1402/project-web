@@ -1,7 +1,21 @@
 const express = require('express');
 const router = express.Router();
+const verifyToken = require('../middleware/auth')
 
 const Post = require('../models/post');
+
+// @route GET api/auth/post
+// @desc add user
+// @access private
+router.get('/', verifyToken,  async (req, res) =>{
+    try {
+        const post = await Post.find({})
+        res.json({success: true, post})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({success: false, message: 'Internal server error'})
+    }
+})
 
 // @route POST api/auth/post
 // @desc add user

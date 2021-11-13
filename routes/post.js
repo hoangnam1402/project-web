@@ -51,7 +51,7 @@ router.put('/:id', verifyToken, async (req, res) => {
     try {
         let updatePost = {name, gmail, context, stat}
 
-        const postUpdateCondition = {id: req.params.id}
+        const postUpdateCondition = {_id: req.params.id}
 
         updatePost = await Post.findOneAndUpdate(postUpdateCondition, updatePost, {new: true})
 
@@ -60,7 +60,7 @@ router.put('/:id', verifyToken, async (req, res) => {
         return res.status(401).json({success: false, message: 'Post not found or user not authorised'})
         
         //good
-        res.json({success: false, message: 'Update success'})
+        res.json({success: true, message: 'Update success'})
     } catch (error) {
         console.log(error)
         res.status(500).json({success: false, message: 'Internal server error'})

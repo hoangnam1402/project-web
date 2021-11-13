@@ -11,14 +11,12 @@ const MONGO_URI=`mongodb+srv://${process.env.dbUser}:${process.env.dbPw}@cluster
 const connectBD = async () => {
     try {
         await mongoose.connect(MONGO_URI, {
-            useCreateIndex: true,
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            useFindAndModify: false,
         });
         console.log('Connect success');
     } catch (error){
-        console.log(error,message)
+        console.log(error.message)
         process.exit(1);
     }
 }

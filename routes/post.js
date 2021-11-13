@@ -5,7 +5,7 @@ const verifyToken = require('../middleware/auth')
 const Post = require('../models/post');
 
 // @route GET api/auth/post
-// @desc add user
+// @desc view post
 // @access private
 router.get('/', verifyToken,  async (req, res) =>{
     try {
@@ -18,7 +18,7 @@ router.get('/', verifyToken,  async (req, res) =>{
 })
 
 // @route POST api/auth/post
-// @desc add user
+// @desc add post
 // @access public
 router.post('/', async (req, res) => {
     const {name, gmail, context} = req.body
@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
 });
 
 // @route PUT api/auth/post
-// @desc add user
+// @desc update post
 // @access private
 router.put('/:id', verifyToken, async (req, res) => {
     const {name, gmail, context, stat} = req.body
@@ -55,12 +55,32 @@ router.put('/:id', verifyToken, async (req, res) => {
 
         updatePost = await Post.findOneAndUpdate(postUpdateCondition, updatePost, {new: true})
 
-        //user not authorised to update postUpdateCondition
+        //user not authorised to update post or post not found
         if (!updatePost)
         return res.status(401).json({success: false, message: 'Post not found or user not authorised'})
         
         //good
         res.json({success: true, message: 'Update success'})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({success: false, message: 'Internal server error'})
+    }
+})
+
+// @route DELETE api/auth/post
+// @desc delete post
+// @access private
+router.delete('/:id', verifyToken, async (req, res) => {    
+    try {
+        const postDeleteCondition = {_id: req.params.id}
+        const deletePost = await Post.findOneAndDelete(postDeleteCondition)
+
+        //user not authorised to delete post or post not found
+        if (!deletePost)
+        return res.status(401).json({success: false, message: 'Post not found or user not authorised'})
+        
+        //good
+        res.json({success: true, message: 'Delete success', post: deletePost})
     } catch (error) {
         console.log(error)
         res.status(500).json({success: false, message: 'Internal server error'})

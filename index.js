@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const authRoutes = require('./routes/auth.js');
+const postRoutes = require('./routes/post.js');
 
 require('dotenv').config()
 const app = express();
@@ -25,6 +26,7 @@ connectBD();
 app.use(express.json())
 
 app.use('/api/auth', authRoutes)
+app.use('/api/post', postRoutes)
 
 app.listen(PORT, ()=>{
     console.log(`Listening at http://localhost:${PORT}`)

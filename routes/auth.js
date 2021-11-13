@@ -19,7 +19,7 @@ router.post('/register', async (req, res) => {
         //check use exist
         const user = await User.findOne({username})
         if(user)
-        return res.status(400),json({success: false, message: 'Username exist'})
+        return res.status(400).json({success: false, message: 'Username exist'})
 
         //good
         const hashedPassword = await argon2.hash(password)
@@ -48,12 +48,12 @@ router.post('/login', async(req, res) => {
         //check use exist
         const user = await User.findOne({username})
         if(!user)
-        return res.status(400),json({success: false, message: 'incorrect username'})
+        return res.status(400).json({success: false, message: 'Incorrect username or password'})
 
         //username found
         const passwordValid = await argon2.verify(user.password, password)
         if (!passwordValid)
-        return res.status(400),json({success: false, message: 'incorrect password'})
+        return res.status(400),json({success: false, message: 'Incorrect username or password'})
 
         //good
         const accessToken = jwt.sign({userID: user._id}, process.env.token)

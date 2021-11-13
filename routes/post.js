@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const User = require('../models/post');
+const Post = require('../models/post');
 
 // @route POST api/auth/post
 // @desc add user
@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
 
         await newPost.save()
 
-        res.json({success: true, message: 'Sent success'})
+        res.json({success: true, message: 'Sent success', post: newPost})
     } catch (error) {
         console.log(error)
         res.status(500).json({success: false, message: 'Internal server error'})

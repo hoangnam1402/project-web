@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken')
+const verifyToken = require('../middleware/auth')
 require('dotenv').config()
 
 const User = require('../models/user');
@@ -9,7 +10,7 @@ const User = require('../models/user');
 // @route POST api/auth/register
 // @desc register user
 // @access Public
-router.post('/register', async (req, res) => {
+router.post('/register', verifyToken,  async (req, res) => {
     const {username, password} = req.body
 
     if(!username || !password)

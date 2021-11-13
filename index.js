@@ -1,5 +1,7 @@
 const express = require('express');
-const moongoose = require('moongoose');
+const mongoose = require('mongoose');
+
+const authRoutes = require('./routes/auth.js');
 
 require('dotenv').config()
 const app = express();
@@ -23,6 +25,8 @@ const connectBD = async () => {
 
 connectBD();
 
+app.use('/api/auth', authRoutes)
+
 app.listen(PORT, ()=>{
-    console.log(`Listening at http://localhost:${port}`)
+    console.log(`Listening at http://localhost:${PORT}`)
 });

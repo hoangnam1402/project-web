@@ -22,6 +22,7 @@ const connectBD = async () => {
 }
 
 connectBD();
+app.use(express.json())
 
 app.use('/api/auth', authRoutes)
 

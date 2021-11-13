@@ -24,7 +24,7 @@ router.post('/register', verifyToken,  async (req, res) => {
 
         //good
         const hashedPassword = await argon2.hash(password)
-        const newUser = new User({username, password: hashedPassword})
+        const newUser = new User({username, password: hashedPassword, admin: 'false'})
         await newUser.save()
 
         //return token

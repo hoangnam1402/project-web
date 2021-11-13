@@ -11,10 +11,7 @@ const UserSchema = new Schema({
         type: String,
         require: true,
     },
-/*     create: { 
-        type: Date,
-        default: Date.now,
-    }, */
+    admin: { type: Boolean },
 })
 
 module.exports = mongoose.model('User', UserSchema)

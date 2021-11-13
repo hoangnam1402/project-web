@@ -21,13 +21,7 @@ const connectBD = async () => {
     }
 }
 
-app.use(express.static("public"));
-app.set("view engine", "ejs");
-app.set("views", "./interface");
-
-app.get("/", (req, res) => {
-    res.render("test");
-})
+connectBD();
 
 app.listen(PORT, ()=>{
     console.log(`Listening at http://localhost:${port}`)

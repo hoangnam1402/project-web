@@ -15,9 +15,9 @@ const AuthContextProvider = ({children})  => {
     //login
     const loginUser = async userForm => {
         try {
-            const response = await axios.post(`${apiurl}/auth/login`)
+            const response = await axios.post(`${apiurl}/auth/login`, userForm)
             if (response.data.success)
-                localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.accessToken)
+            localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.accessToken)
             return response.data
         } catch (error) {
             if (error.response.data) return error.response.data
@@ -35,5 +35,4 @@ const AuthContextProvider = ({children})  => {
         </AuthContext.Provider>
     )
 }
-
 export default AuthContextProvider

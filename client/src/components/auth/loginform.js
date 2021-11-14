@@ -5,6 +5,9 @@ import {useState, useContext} from 'react'
 import {AuthContext} from '../../contexts/authContexts'
 
 const LoginForm = () => { 
+    //context
+    const {loginUser} = useContext(AuthContext)
+
     const [loginForm, setLoginForm] = useState({
         username: '',
         password: ''
@@ -14,8 +17,19 @@ const LoginForm = () => {
 
     const onChangeLoginForm = event => setLoginForm({...loginForm, [event.target.name]: event.target.value})
 
+    const login = async event => {
+        event.preventDefault()
+
+        try {
+            const loginData = await loginUser(loginForm)
+            console.log(loginData)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (<>
-    <Form className = 'my-4'>
+    <Form className = 'my-4' onSubmit = {login} >
         <Form.Group>
             <Form.Control
                 type='text'

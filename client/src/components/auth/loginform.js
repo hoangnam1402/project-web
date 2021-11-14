@@ -3,9 +3,8 @@ import Form from 'react-bootstrap/Form'
 import { Link } from 'react-router-dom'
 
 const LoginForm = () => { 
-    return (
-    <>
-    <Form>
+    return (<>
+    <Form className = 'my-4'>
         <Form.Group>
             <Form.Control
                 type='text'
@@ -27,14 +26,13 @@ const LoginForm = () => {
             />
         </Form.Group>
             <Button variant='success' type='submit'> Login </Button>
-        </Form>
-        <p> Not an admin?
-            <Link to='/register'>
-                <Button variant='info' size='sm' className='ml-2'> Go back </Button>
-            </Link>
-        </p>
-    </>
-    )
+    </Form>
+    <p> Not an admin?
+        <Link to='/'>
+            <Button variant='info' size='sm' className='ml-2'> Continue as Guest </Button>
+        </Link>
+    </p>
+    </>)
 }
 
 export default LoginForm

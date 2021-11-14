@@ -21,14 +21,17 @@ router.get('/', verifyToken,  async (req, res) =>{
 // @desc add post
 // @access public
 router.post('/', async (req, res) => {
-    const {name, gmail, context} = req.body
+    const {name, gmail, content} = req.body
 
     //
     if(!gmail)
     return res.status(400).json({success: false, message: 'Gmail is require'})
 
+    if(!content)
+    return res.status(400).json({success: false, message: 'Content is require'})
+
     try {
-        const newPost = new Post({name, gmail, context, stat: 'Wait'})
+        const newPost = new Post({name, gmail, content, stat: 'Wait'})
 
         await newPost.save()
 
@@ -43,13 +46,16 @@ router.post('/', async (req, res) => {
 // @desc update post
 // @access private
 router.put('/:id', verifyToken, async (req, res) => {
-    const {name, gmail, context, stat} = req.body
+    const {name, gmail, content, stat} = req.body
     
     if(!gmail)
     return res.status(400).json({success: false, message: 'Gmail is require'})
 
+    if(!content)
+    return res.status(400).json({success: false, message: 'Content is require'})
+
     try {
-        let updatePost = {name, gmail, context, stat}
+        let updatePost = {name, gmail, content, stat}
 
         const postUpdateCondition = {_id: req.params.id}
 

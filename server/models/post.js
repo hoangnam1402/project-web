@@ -9,7 +9,7 @@ const PostSchema = new Schema({
         type: String,
         require: true,
     },
-    context: { type: String },
+    content: { type: String },
     stat: { 
         type: String,
         enum: ['Wait','Read','Reply']

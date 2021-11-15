@@ -7,9 +7,23 @@ require('dotenv').config()
 
 const User = require('../models/user');
 
+// @route Get api/auth/
+// @desc check if user login
+// @access private
+router.get('/', verifyToken,  async (req, res) => {
+    try {
+        const user = await User.findById(req.userId).select('-password')
+        if (!user) return res.status(400).json({success: false, message: 'User not found'})
+        res.json({success: true, user})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({success: false, message: 'Internal server error'})
+    }
+})
+
 // @route POST api/auth/register
 // @desc register user
-// @access Public
+// @access private
 router.post('/register', verifyToken,  async (req, res) => {
     const {username, password} = req.body
 
@@ -28,7 +42,7 @@ router.post('/register', verifyToken,  async (req, res) => {
         await newUser.save()
 
         //return token
-        const accessToken = jwt.sign({userID: newUser._id}, process.env.token)
+        const accessToken = jwt.sign({userId: newUser._id}, process.env.token)
         res.json({success: true, message: 'User create success', accessToken})
     } catch (error) {
         console.log(error)

@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import {Link, useNavigate} from 'react-router-dom'
 import {useState, useContext} from 'react'
 import {AuthContext} from '../../contexts/authContexts'
+import AlertMessage from '../layout/alertMessage'
 
 const LoginForm = () => { 
     //context
@@ -17,6 +18,8 @@ const LoginForm = () => {
         password: ''
     })
 
+    const [alert, setAlert] = useState(null)
+
     const {username, password} = loginForm
 
     const onChangeLoginForm = event => setLoginForm({...loginForm, [event.target.name]: event.target.value})
@@ -27,9 +30,10 @@ const LoginForm = () => {
         try {
             const loginData = await loginUser(loginForm)
             if (loginData.success)  {
-                navigate('/dashboard')
+                //navigate('/dashboard')
             } else {
-
+                setAlert({type: 'warning', message: loginData.message})
+                setTimeout(() => setAlert(null), 5000)
             }
         } catch (error) {
             console.log(error)
@@ -38,6 +42,7 @@ const LoginForm = () => {
 
     return (<>
     <Form className = 'my-4' onSubmit = {login} >
+        <AlertMessage info={alert} />
         <Form.Group>
             <Form.Control
                 type='text'
@@ -58,11 +63,11 @@ const LoginForm = () => {
                 onChange={onChangeLoginForm}
             />
         </Form.Group>
-            <Button variant='success' type='submit'> Login </Button>
+        <Button variant='success' type='submit'> Login </Button>
     </Form>
     <p> Not an admin? 
-        <Link to='/'>
-            <Button variant='info' size='sm' className='ml-2'> Continue as Guest </Button>
+        <Link to='/dashboard'>
+            <Button variant='info' size='5m' className='ml-2'> Continue as Guest </Button>
         </Link>
     </p>
     </>)

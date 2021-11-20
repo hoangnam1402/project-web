@@ -10,10 +10,9 @@ function App() {
   <AuthContextProvider>
     <Router>
       <Routes>
-        <Route exact path = '/' element = {< Landing />} />
-        <Route exact path = '/login' element = {< Auth authRoute='login' />} />
-        <Route exact path = '/register' element = {< Auth authRoute='register' />} />
-        <Route exact path = '/dashboard' element = {< Dashboard />} />
+        <Route path = '/' element = {< Landing />} />
+        <Route path = '/login' element = {< Auth authRoute='login' />} />
+        <Route path = '/dashboard' element = {< Dashboard />} />
       </Routes>
     </Router>
   </AuthContextProvider>

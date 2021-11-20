@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import {Link, useNavigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {useState, useContext} from 'react'
 import {AuthContext} from '../../contexts/authContexts'
 import AlertMessage from '../layout/alertMessage'
@@ -8,9 +8,6 @@ import AlertMessage from '../layout/alertMessage'
 const LoginForm = () => { 
     //context
     const {loginUser} = useContext(AuthContext)
-
-    //route
-    const navigate = useNavigate()
 
     //local state
     const [loginForm, setLoginForm] = useState({
@@ -30,7 +27,6 @@ const LoginForm = () => {
         try {
             const loginData = await loginUser(loginForm)
             if (loginData.success)  {
-                //navigate('/dashboard')
             } else {
                 setAlert({type: 'warning', message: loginData.message})
                 setTimeout(() => setAlert(null), 5000)
@@ -67,7 +63,7 @@ const LoginForm = () => {
     </Form>
     <p> Not an admin? 
         <Link to='/dashboard'>
-            <Button variant='info' size='5m' className='ml-2'> Continue as Guest </Button>
+            <Button variant='info' size='sm' className='ml-2'> Continue as Guest </Button>
         </Link>
     </p>
     </>)

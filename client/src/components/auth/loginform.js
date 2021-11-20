@@ -60,7 +60,7 @@ const LoginForm = () => {
         </Form.Group>
             <Button variant='success' type='submit'> Login </Button>
     </Form>
-    <p> Not an admin?
+    <p> Not an admin? 
         <Link to='/'>
             <Button variant='info' size='sm' className='ml-2'> Continue as Guest </Button>
         </Link>

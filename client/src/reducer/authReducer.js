@@ -5,7 +5,7 @@ export const authReducer = (state, action) => {
         case 'SET_AUTH' :
             return {
                 ...state, 
-                authLoadingauthLoading: false,
+                authLoading: false,
                 isAuthenticated,
                 user
             }

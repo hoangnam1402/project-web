@@ -49,7 +49,7 @@ const LoginForm = () => {
                 onChange={onChangeLoginForm}
             />
         </Form.Group>
-        <Form.Group>
+        <Form.Group className = 'my-2'>
             <Form.Control
                 type='password'
                 placeholder='Password'
@@ -61,9 +61,9 @@ const LoginForm = () => {
         </Form.Group>
         <Button variant='success' type='submit'> Login </Button>
     </Form>
-    <p> Not an admin? 
+    <p> No account? 
         <Link to='/dashboard'>
-            <Button variant='info' size='sm' className='ml-2'> Continue as Guest </Button>
+            <Button variant='info' size='sm' className='mx-2'> Continue as Guest </Button>
         </Link>
     </p>
     </>)

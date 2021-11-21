@@ -41,10 +41,10 @@ const PostContextProvider = ({ children }) => {
         }
     }
 
-        // Add post
+    // Add post
     const addPost = async newPost => {
         try {
-            const response = await axios.post(`${apiurl}/posts`, newPost)
+            const response = await axios.post(`${apiurl}/post`, newPost)
             if (response.data.success) {
                 dispatch({ type: ADD_POST, payload: response.data.post })
                 return response.data
@@ -59,7 +59,7 @@ const PostContextProvider = ({ children }) => {
     // Delete post
     const deletePost = async postId => {
         try {
-            const response = await axios.delete(`${apiurl}/posts/${postId}`)
+            const response = await axios.delete(`${apiurl}/post/${postId}`)
             if (response.data.success)
                 dispatch({ type: DELETE_POST, payload: postId })
         } catch (error) {
@@ -77,7 +77,7 @@ const PostContextProvider = ({ children }) => {
     const updatePost = async updatedPost => {
         try {
             const response = await axios.put(
-                `${apiurl}/posts/${updatedPost._id}`,
+                `${apiurl}/post/${updatedPost._id}`,
                 updatedPost
             )
             if (response.data.success) {

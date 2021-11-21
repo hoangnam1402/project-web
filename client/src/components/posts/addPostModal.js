@@ -6,7 +6,7 @@ import {PostContext} from '../../contexts/postContexts'
 
 const AddPostModal = () => {
 	// Contexts
-/* 	const {
+	const {
 		showAddPostModal,
 		setShowAddPostModal,
 		addPost,
@@ -40,34 +40,34 @@ const AddPostModal = () => {
 	const resetAddPostData = () => {
 		setNewPost({ name: '', gmail: '', content: '', stat: 'Wait' })
 		setShowAddPostModal(false)
-	} */
+	} 
 
 	return (
-		<Modal show={true} /* onHide={closeDialog} */>
+		<Modal show={showAddPostModal} onHide={closeDialog} >
 			<Modal.Header closeButton>
-				<Modal.Title>What do you want to learn?</Modal.Title>
+				<Modal.Title>What do you want to send?</Modal.Title>
 			</Modal.Header>
-			<Form /* onSubmit={onSubmit} */>
+			<Form onSubmit={onSubmit}>
 				<Modal.Body>
-                    <Form.Group>
+                    <Form.Group className = 'my-2'>
 						<Form.Control
                             type='text'
 							placeholder='name'
 							name='name'
-//							value={name}
-//							onChange={onChangeNewPostForm}
+							value={name}
+							onChange={onChangeNewPostForm}
 						/>
 					</Form.Group>
-                    <Form.Group>
+                    <Form.Group className = 'my-2'>
 						<Form.Control
                             type='text'
 							placeholder='gmail'
 							name='gmail'
-//							value={gmail}
-//							onChange={onChangeNewPostForm}
+							value={gmail}
+							onChange={onChangeNewPostForm}
 						/>
 					</Form.Group>
-					<Form.Group>
+					<Form.Group className = 'my-2'>
 						<Form.Control
                             as='textarea'
                             rows={3}
@@ -75,8 +75,8 @@ const AddPostModal = () => {
 							name='content'
 							required
 							aria-describedby='content-help'
-//							value={content}
-//							onChange={onChangeNewPostForm}
+							value={content}
+							onChange={onChangeNewPostForm}
 						/>
 						<Form.Text id='content-help' muted>
 							Required
@@ -84,7 +84,7 @@ const AddPostModal = () => {
 					</Form.Group>
 				</Modal.Body>
 				<Modal.Footer>
-					<Button variant='secondary' /* onClick={closeDialog} */>
+					<Button variant='secondary' onClick={closeDialog} >
 						Cancel
 					</Button>
 					<Button variant='primary' type='submit'>

@@ -33,10 +33,10 @@ const NavbarMenu = () => {
                     </Nav.Link>
                     <Nav.Link
                         className='font-weight-bolder text-white'
-                        to='/about'
+                        to='/contact'
                         as={Link}
                     >
-                    About
+                    Contact
                     </Nav.Link>
                 </Nav>
 

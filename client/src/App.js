@@ -3,8 +3,9 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Landing from './components/layout/landing'
 import Dashboard from './views/dashboard'
 import AdminDashboard from './views/adminDashboard'
-import About from './views/about'
+import Contact from './views/contact'
 import Auth from './views/auth'
+import Guest from './views/guest'
 import AuthContextProvider from './contexts/authContexts'
 import PostContextProvider from './contexts/postContexts'
 import {AuthContext} from './contexts/authContexts'
@@ -20,14 +21,14 @@ function App() {
         <Routes>
           <Route path = '/' element = {< Landing />} />
           <Route path = '/login' element = {< Auth authRoute='login' />} />
-          <Route path = '/dashboard' element = {< Dashboard />} />
+          <Route path = '/dashboard' element = {< Guest authRoute='dashboard' />} />
           <Route path = '/admindashboard' element = {
             <PrivateRoute redirectTo="/login">
               <AdminMenu/>
               < AdminDashboard />
             </PrivateRoute>
           }/>
-          <Route path = '/about' element = {< About />} />
+          <Route path = '/contact' element = {< Guest authRoute='contact' />} />
         </Routes>
       </Router>
     </PostContextProvider>

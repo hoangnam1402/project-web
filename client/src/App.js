@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Landing from './components/layout/landing'
 import Dashboard from './views/dashboard'
 import AdminDashboard from './views/adminDashboard'
+import About from './views/about'
 import Auth from './views/auth'
 import AuthContextProvider from './contexts/authContexts'
 import PostContextProvider from './contexts/postContexts'
@@ -24,6 +25,7 @@ function App() {
               < AdminDashboard />
             </PrivateRoute>
           }/>
+          <Route path = '/about' element = {< About />} />
         </Routes>
       </Router>
     </PostContextProvider>

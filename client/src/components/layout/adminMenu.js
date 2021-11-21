@@ -35,17 +35,10 @@ const NavbarMenu = () => {
                 <Nav className='mr-auto'>
                     <Nav.Link
                         className='font-weight-bolder text-white'
-                        to='/dashboard'
+                        to='/adminDashboard'
                         as={Link}
                     >
                     Dashboard
-                    </Nav.Link>
-                    <Nav.Link
-                        className='font-weight-bolder text-white'
-                        to='/about'
-                        as={Link}
-                    >
-                    About
                     </Nav.Link>
                 </Nav>
 

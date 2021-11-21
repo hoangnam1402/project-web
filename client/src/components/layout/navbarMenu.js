@@ -2,18 +2,20 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import avatar from '../../assets/avatar.jpg'
 import { Link } from 'react-router-dom'
+import Image from 'react-bootstrap/Image'
+import Button from 'react-bootstrap/Button'
 
 const NavbarMenu = () => {
     return (
         <Navbar expand='lg' bg='primary' variant='dark' className='shadow'>
             <Navbar.Brand className='font-weight-bolder text-white'>
-                <img
+                <Image
                     src={avatar}
                     alt='avatar'
                     width='32'
                     height='32'
                     className='mr-2'
-                    border-radius='50%'
+                    roundedCircle
                 />
                 Nam Phan
             </Navbar.Brand>
@@ -36,6 +38,17 @@ const NavbarMenu = () => {
                     >
                     About
                     </Nav.Link>
+                </Nav>
+
+                <Nav>
+                    <Link to='/'>
+                        <Button
+                            variant='secondary'
+                            className='font-weight-bolder text-white'
+                        >
+                            Login
+                        </Button>
+                    </Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar> 

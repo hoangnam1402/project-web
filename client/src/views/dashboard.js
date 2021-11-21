@@ -13,7 +13,7 @@ const Dashboard = () => {
         <Link to='/'>
             <Button variant='info' size='sm' className='ml-2'> Go back </Button>
         </Link>
-    </p>
+        </p>
     </>)
     return (<>
     <NavbarMenu/>

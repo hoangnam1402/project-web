@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import {AuthContext} from '../../contexts/authContexts'
 import {useContext} from 'react'
+import Image from 'react-bootstrap/Image'
 
 const NavbarMenu = () => {
     const {
@@ -17,13 +18,13 @@ const NavbarMenu = () => {
     return (
         <Navbar expand='lg' bg='primary' variant='dark' className='shadow'>
             <Navbar.Brand className='font-weight-bolder text-white'>
-                <img
+                <Image
                     src={avatar}
                     alt='avatar'
                     width='32'
                     height='32'
-                    className='mr-2'
-                    border-radius='50%'
+                    className='mr-2 '
+                    roundedCircle 
                 />
                 Nam Phan
             </Navbar.Brand>

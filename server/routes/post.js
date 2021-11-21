@@ -9,8 +9,8 @@ const Post = require('../models/post');
 // @access private
 router.get('/', verifyToken,  async (req, res) =>{
     try {
-        const post = await Post.find({})
-        res.json({success: true, post})
+        const posts = await Post.find({})
+        res.json({success: true, posts})
     } catch (error) {
         console.log(error)
         res.status(500).json({success: false, message: 'Internal server error'})

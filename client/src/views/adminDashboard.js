@@ -28,6 +28,16 @@ const AdminDashboard = () => {
                 <Spinner animation ='border' variant='info' />
             </div>
         )
+    }  else if (posts.length === 0) {
+		body = (
+			<>
+				<Col className='text-center'>
+				<h1>
+                    not think here
+				</h1>
+			    </Col>
+			</>
+		)
     } else {
         body = (<>
             <Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>

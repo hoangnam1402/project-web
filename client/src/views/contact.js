@@ -12,7 +12,9 @@ const Contact = () => {
     const {
         postState: {post, posts, postsLoading},
         getPosts,
-        setShowAddPostModal
+        setShowAddPostModal,
+        showToast: {show, message, type},
+        setShowToast,
     } = useContext(PostContext)
 
     let body = null
@@ -36,13 +38,21 @@ const Contact = () => {
         {body}
         <AddPostModal/>
 
+        {/* Show toast after post */}
         <Toast 
-            show={true} 
+            show={show} 
             style={{ position: 'fixed', top: '20%', right: '1%', width: '200px'}} 
-            className='bg-success text-white'
+            className={`bg-${type} text-white`}
+            onClose={setShowToast.bind(this, {
+                show: false,
+                message: '',
+                type: null
+            })}
+            delay={3000} 
+            autohide
         >
             <Toast.Body>
-                <strong>Send success</strong>
+                <strong>{message}</strong>
             </Toast.Body>
         </Toast>
     </>)

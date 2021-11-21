@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import SinglePost from '../components/posts/singlePost'
 import addIcon from '../assets/add.png'
+import UpdatePostModal from '../components/posts/updatePostModal'
 
 const AdminDashboard = () => {
     //contexts
@@ -42,6 +43,7 @@ const AdminDashboard = () => {
     
     return (<>
         {body}
+        {post !== null && <UpdatePostModal />}
     </>)
 }
 

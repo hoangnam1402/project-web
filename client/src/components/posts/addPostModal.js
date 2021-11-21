@@ -66,6 +66,9 @@ const AddPostModal = () => {
 							value={gmail}
 							onChange={onChangeNewPostForm}
 						/>
+                        <Form.Text id='content-help' muted>
+							Required
+						</Form.Text>
 					</Form.Group>
 					<Form.Group className = 'my-2'>
 						<Form.Control

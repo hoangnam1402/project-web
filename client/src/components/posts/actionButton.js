@@ -5,9 +5,7 @@ import {PostContext} from '../../contexts/postContexts'
 import {useContext} from 'react'
 
 const ActionButtons = ({ _id }) => {
-	const { deletePost, findPost, setShowUpdatePostModal } = useContext(
-		PostContext
-	)
+	const { deletePost, findPost, setShowUpdatePostModal } = useContext(PostContext)
 
 	const choosePost = postId => {
 		findPost(postId)

@@ -10,6 +10,7 @@ import PostContextProvider from './contexts/postContexts'
 import {AuthContext} from './contexts/authContexts'
 import {useContext} from 'react'
 import {Navigate} from 'react-router-dom'
+import AdminMenu from './components/layout/adminMenu'
 
 function App() {
   return ( 
@@ -22,6 +23,7 @@ function App() {
           <Route path = '/dashboard' element = {< Dashboard />} />
           <Route path = '/admindashboard' element = {
             <PrivateRoute redirectTo="/login">
+              <AdminMenu/>
               < AdminDashboard />
             </PrivateRoute>
           }/>

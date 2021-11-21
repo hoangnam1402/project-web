@@ -2,16 +2,15 @@ import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Badge from 'react-bootstrap/Badge'
-import Button from 'react-bootstrap/Button'
-//import ActionButtons from './ActionButtons'
+import ActionButtons from './actionButton'
 
-const SinglePost = ({ post: { _id, status, title, description, url } }) => (
+const SinglePost = ({ post: { _id, stat, name, gmail, content } }) => (
 	<Card
 		className='shadow'
 		border={
-			status === 'Reply'
+			stat === 'Reply'
 				? 'success'
-				: status === 'Read'
+				: stat === 'Read'
 				? 'warning'
 				: 'danger'
 		}
@@ -20,26 +19,27 @@ const SinglePost = ({ post: { _id, status, title, description, url } }) => (
 			<Card.Title>
 				<Row>
 					<Col>
-						<p className='post-title'>{title}</p>
+						<p className='post-title'>{name}</p>
+                        <Card.Text>{gmail}</Card.Text>
 						<Badge
 							pill
 							variant={
-                                status === 'Reply'
+                                stat === 'Reply'
                                 ? 'success'
-                                : status === 'Read'
+                                : stat === 'Read'
                                 ? 'warning'
                                 : 'danger'
 							}
 						>
-                            {status}
+                            {stat}
 						</Badge>
 					</Col>
-					<Col className='text-right'> button
-                        {/* <ActionButtons url={url} _id={_id} /> */}
+					<Col className='text-right'>
+                        <ActionButtons _id={_id}/>
 					</Col>
 				</Row>
 			</Card.Title>
-			<Card.Text>{description}</Card.Text>
+			<Card.Text>{content}</Card.Text>
 		</Card.Body>
 	</Card>
 )

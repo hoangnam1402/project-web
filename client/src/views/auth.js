@@ -17,7 +17,7 @@ const Auth = ({ authRoute }) => {
         </div>
         )
     }
-    else if (isAuthenticated) return <Navigate to ='/dashboard' />
+    else if (isAuthenticated) return <Navigate to ='/AdminDashboard' />
     else 
     body = (
     <>

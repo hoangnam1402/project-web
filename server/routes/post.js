@@ -66,7 +66,7 @@ router.put('/:id', verifyToken, async (req, res) => {
         return res.status(401).json({success: false, message: 'Post not found or user not authorised'})
         
         //good
-        res.json({success: true, message: 'Update success'})
+        res.json({success: true, message: 'Update success', post: updatePost})
     } catch (error) {
         console.log(error)
         res.status(500).json({success: false, message: 'Internal server error'})

@@ -1,9 +1,7 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Landing from './components/layout/landing'
-import Dashboard from './views/dashboard'
 import AdminDashboard from './views/adminDashboard'
-import Contact from './views/contact'
 import Auth from './views/auth'
 import Guest from './views/guest'
 import AuthContextProvider from './contexts/authContexts'

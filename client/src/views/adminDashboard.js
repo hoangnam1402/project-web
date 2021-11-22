@@ -1,13 +1,9 @@
-import Button from 'react-bootstrap/Button'
-import {Link} from 'react-router-dom'
-import AdminMenu from '../components/layout/adminMenu'
 import {useContext, useEffect} from 'react'
 import {PostContext} from '../contexts/postContexts'
 import Spinner from 'react-bootstrap/Spinner'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import SinglePost from '../components/posts/singlePost'
-import addIcon from '../assets/add.png'
 import UpdatePostModal from '../components/posts/updatePostModal'
 
 const AdminDashboard = () => {

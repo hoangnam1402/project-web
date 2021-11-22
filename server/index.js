@@ -7,7 +7,7 @@ const postRoutes = require('./routes/post.js');
 
 require('dotenv').config()
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 const MONGO_URI=`mongodb+srv://${process.env.dbUser}:${process.env.dbPw}@cluster0.mbklg.mongodb.net/${process.env.dbName}`;
 const connectBD = async () => {

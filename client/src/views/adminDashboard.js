@@ -5,13 +5,16 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import SinglePost from '../components/posts/singlePost'
 import UpdatePostModal from '../components/posts/updatePostModal'
+import Toast from 'react-bootstrap/Toast'
 
 const AdminDashboard = () => {
     //contexts
     const {
         postState: {post, posts, postsLoading},
         getPosts,
-        setShowAddPostModal
+        setShowAddPostModal,
+        showToast: {show, message, type},
+        setShowToast
     } = useContext(PostContext)
 
     // Start: Get all posts
@@ -40,6 +43,24 @@ const AdminDashboard = () => {
     return (<>
         {body}
         {post !== null && <UpdatePostModal />}
+
+        {/* Show toast after post */}
+        <Toast 
+            show={show} 
+            style={{ position: 'fixed', top: '20%', right: '1%', width: '200px'}} 
+            className={`bg-${type} text-white`}
+            onClose={setShowToast.bind(this, {
+                show: false,
+                message: '',
+                type: null
+            })}
+            delay={3000} 
+            autohide
+        >
+            <Toast.Body>
+                <strong>{message}</strong>
+            </Toast.Body>
+        </Toast>
     </>)
 }
 

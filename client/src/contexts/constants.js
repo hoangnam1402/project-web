@@ -1,4 +1,4 @@
-export const apiurl = process.env.node_env !== 'production' ? 'https://localhost:5000/api' : 'https://web-project-001.herokuapp.com/api'
+export const apiurl = 'https://web-project-001.herokuapp.com/api'
 
 export const LOCAL_STORAGE_TOKEN_NAME = 'cv'
 
